@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>کلاس‌های تابستانی دبیرستان نمونه دولتی آیت‌الله خامنه‌ای</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{
+    --ink:#241B3D;
+    --ink-soft:#665C82;
+    --bg1:#FBF7FF;
+    --bg2:#F1E9FF;
+    --paper:#FFFFFF;
+    --violet:#7B5CFA;
+    --violet-dark:#5E3FE0;
+    --coral:#FF6B6B;
+    --teal:#1FC8B6;
+    --sun:#FFB627;
+    --sky:#3DAEFF;
+    --mint:#26D48A;
+    --line:#ECE6FA;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Vazirmatn', sans-serif;
+    color:var(--ink);
+    background:linear-gradient(180deg, var(--bg1), var(--bg2) 60%);
+    padding:30px 16px 46px;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* ============ CUSTOM SCROLLBAR ============ */
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:var(--bg1); }
+  ::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--violet), var(--sky));
+    border-radius:10px;
+    border:2px solid var(--bg1);
+  }
+  ::-webkit-scrollbar-thumb:hover{ background:linear-gradient(var(--violet-dark), var(--sky)); }
+
+  /* ============ FOCUS STATES ============ */
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .gate-card:focus-visible{
+    outline:3px solid var(--violet);
+    outline-offset:3px;
+    border-radius:8px;
+  }
+
+  /* ============ LIVE BLOB BACKGROUND ============ */
+  .blob-field{
+    position:fixed; inset:0;
+    overflow:hidden;
+    z-index:-1;
+    pointer-events:none;
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.35;
+    will-change:transform;
+  }
+  .blob1{
+    width:420px; height:420px;
+    background:var(--violet);
+    top:-10%; left:-8%;
+    animation:blobMove1 22s ease-in-out infinite alternate;
+  }
+  .blob2{
+    width:380px; height:380px;
+    background:var(--teal);
+    top:55%; right:-10%;
+    animation:blobMove2 26s ease-in-out infinite alternate;
+  }
+  .blob3{
+    width:320px; height:320px;
+    background:var(--coral);
+    bottom:-12%; left:20%;
+    animation:blobMove3 19s ease-in-out infinite alternate;
+  }
+  .blob4{
+    width:260px; height:260px;
+    background:var(--sun);
+    top:10%; right:20%;
+    animation:blobMove4 24s ease-in-out infinite alternate;
+    opacity:0.22;
+  }
+  @keyframes blobMove1{
+    0%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(60px,40px) scale(1.15); }
+    100%{ transform:translate(-30px,80px) scale(0.95); }
+  }
+  @keyframes blobMove2{
+    0%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(-70px,-30px) scale(1.1); }
+    100%{ transform:translate(-20px,60px) scale(0.9); }
+  }
+  @keyframes blobMove3{
+    0%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(50px,-50px) scale(1.2); }
+    100%{ transform:translate(90px,10px) scale(1); }
+  }
+  @keyframes blobMove4{
+    0%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(-40px,50px) scale(0.9); }
+    100%{ transform:translate(30px,-30px) scale(1.1); }
+  }
+
+  .wrap{ max-width:880px; margin:0 auto; position:relative; }
+
+  /* ============ HERO / INTRO ============ */
+  .hero{ text-align:center; padding:6px 10px 24px; }
+
+  .monogram{
+    width:60px; height:60px;
+    margin:0 auto 14px;
+    position:relative;
+    opacity:0;
+    transform:scale(0.4) rotate(-25deg);
+    animation:introPop .7s cubic-bezier(.2,.9,.25,1.3) .1s forwards;
+  }
+  .monogram-shape{
+    width:100%; height:100%;
+    border-radius:50% 50% 14px 14px;
+    background:linear-gradient(135deg, var(--violet), var(--sky));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px -8px rgba(123,92,250,0.55);
+    position:relative;
+  }
+  .monogram-shape span{
+    font-weight:800; font-size:22px; color:#fff;
+    margin-top:-6px;
+  }
+  .monogram-pages{
+    position:absolute;
+    bottom:-6px; left:50%;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; gap:2px;
+    width:34px;
+  }
+  .monogram-pages i{
+    display:block; height:2px; border-radius:2px;
+    background:#fff;
+    opacity:0.9;
+  }
+  .monogram-pages i:nth-child(1){ width:100%; }
+  .monogram-pages i:nth-child(2){ width:78%; margin:0 auto; }
+  .monogram-pages i:nth-child(3){ width:56%; margin:0 auto; }
+
+  @keyframes introPop{
+    0%{ opacity:0; transform:scale(0.4) rotate(-25deg); }
+    60%{ opacity:1; transform:scale(1.08) rotate(4deg); }
+    100%{ opacity:1; transform:scale(1) rotate(0deg); }
+  }
+
+  .eyebrow{
+    display:inline-block;
+    letter-spacing:2.5px;
+    font-size:11px;
+    font-weight:700;
+    color:var(--violet-dark);
+    text-transform:uppercase;
+    background:rgba(123,92,250,0.1);
+    padding:5px 14px;
+    border-radius:999px;
+    margin-bottom:12px;
+    opacity:0;
+    transform:translateY(10px);
+    animation:fadeUp .6s ease .28s forwards;
+  }
+
+  .school-name{
+    font-weight:900;
+    font-size:clamp(23px,4vw,34px);
+    margin:0;
+    color:var(--ink);
+    line-height:1.3;
+  }
+  .school-name .line{
+    display:block;
+    opacity:0;
+    transform:translateY(16px);
+    animation:fadeUp .65s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .school-name .line:nth-child(1){ animation-delay:.36s; }
+  .school-name .line:nth-child(2){ animation-delay:.46s; }
+
+  .school-year{
+    display:inline-block;
+    margin-top:8px;
+    font-size:13px;
+    font-weight:700;
+    color:#fff;
+    background:linear-gradient(135deg, var(--coral), var(--sun));
+    padding:4px 14px;
+    border-radius:999px;
+    opacity:0;
+    transform:translateY(10px);
+    animation:fadeUp .6s ease .56s forwards;
+  }
+  .subtitle{
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink-soft);
+    max-width:420px;
+    margin:14px auto 0;
+    line-height:1.75;
+    opacity:0;
+    transform:translateY(10px);
+    animation:fadeUp .6s ease .64s forwards;
+  }
+
+  @keyframes fadeUp{
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  /* ============ TRACK SELECTOR (gate) ============ */
+  .gate{ max-width:620px; margin:20px auto 0; }
+  .gate-title{
+    text-align:center; font-size:13px; font-weight:700; color:var(--ink-soft); margin-bottom:14px;
+    opacity:0; transform:translateY(10px);
+    animation:fadeUp .6s ease .72s forwards;
+  }
+  .gate-cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    perspective:900px;
+  }
+  .gate-card{
+    background:var(--paper);
+    border:2px solid var(--line);
+    border-radius:18px;
+    padding:22px 16px;
+    text-align:center;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transform:translateY(18px) rotateX(0) rotateY(0);
+    opacity:0;
+    animation:fadeUp .6s cubic-bezier(.2,.8,.2,1) forwards;
+    transition:box-shadow .2s ease, border-color .2s ease, transform .08s linear;
+  }
+  .gate-card.tj{ animation-delay:.8s; }
+  .gate-card.en{ animation-delay:.88s; }
+  .gate-card:hover{ box-shadow:0 20px 40px -16px rgba(36,27,61,0.28); }
+  .gate-card.tj:hover{ border-color:var(--sky); }
+  .gate-card.en:hover{ border-color:var(--teal); }
+
+  .gate-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.55), transparent 55%);
+    opacity:0;
+    transition:opacity .25s ease;
+    pointer-events:none;
+  }
+  .gate-card:hover::before{ opacity:1; }
+
+  .gate-card .g-icon{
+    width:42px; height:42px; margin:0 auto 10px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:16px; color:#fff;
+    position:relative; z-index:1;
+  }
+  .gate-card.tj .g-icon{ background:linear-gradient(135deg, var(--sky), var(--violet)); }
+  .gate-card.en .g-icon{ background:linear-gradient(135deg, var(--teal), var(--mint)); }
+  .gate-card .g-title{ font-weight:800; font-size:15px; color:var(--ink); margin-bottom:4px; position:relative; z-index:1; }
+  .gate-card .g-sub{ font-size:11.5px; color:var(--ink-soft); opacity:0.85; position:relative; z-index:1; }
+
+  @media (max-width:520px){ .gate-cards{ grid-template-columns:1fr; } }
+
+  /* ============ CINEMATIC TRANSITION OVERLAY ============ */
+  .transition-overlay{
+    position:fixed; inset:0;
+    z-index:999;
+    clip-path:circle(0% at var(--ox,50%) var(--oy,50%));
+    transition:clip-path .65s cubic-bezier(.65,0,.35,1);
+    pointer-events:none;
+  }
+  .transition-overlay.expand{
+    clip-path:circle(150% at var(--ox,50%) var(--oy,50%));
+  }
+
+  /* ============ RESULT HEADER ============ */
+  .result-bar{
+    display:none;
+    align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;
+    margin:22px 0 16px;
+  }
+  .result-bar .chip{ font-size:12px; font-weight:800; padding:6px 16px; border-radius:999px; color:#fff; }
+  .result-bar .chip.tj{ background:linear-gradient(135deg, var(--sky), var(--violet)); }
+  .result-bar .chip.en{ background:linear-gradient(135deg, var(--teal), var(--mint)); }
+  .result-bar button{
+    font-family:inherit;
+    font-size:11.5px; font-weight:700;
+    border:none; border-radius:999px;
+    padding:6px 14px;
+    cursor:pointer;
+    letter-spacing:0.2px;
+    transition:background .18s ease, transform .12s ease;
+  }
+  .result-bar button:active{ transform:scale(0.94); }
+  .result-bar .switch-btn{ color:var(--violet-dark); background:rgba(123,92,250,0.08); }
+  .result-bar .switch-btn:hover{ background:rgba(123,92,250,0.16); }
+  .result-bar .download-btn{
+    color:#fff;
+    background:linear-gradient(135deg, var(--coral), var(--violet) 55%, var(--sky));
+    background-size:200% 200%;
+    display:inline-flex; align-items:center; gap:7px;
+    padding:11px 22px;
+    font-size:13px;
+    border-radius:999px;
+    box-shadow:0 10px 26px -10px rgba(123,92,250,0.65);
+    animation:dlPulse 2.4s ease-in-out infinite, dlSheen 5s ease infinite;
+    position:relative;
+  }
+  .result-bar .download-btn:hover{
+    box-shadow:0 14px 32px -10px rgba(123,92,250,0.75);
+    transform:translateY(-2px) scale(1.02);
+  }
+  .result-bar .download-btn:active{ transform:translateY(0) scale(0.96); }
+  .result-bar .download-btn svg{ width:15px; height:15px; }
+  @keyframes dlPulse{
+    0%,100%{ box-shadow:0 10px 26px -10px rgba(123,92,250,0.65); }
+    50%{ box-shadow:0 10px 34px -6px rgba(255,107,107,0.55); }
+  }
+  @keyframes dlSheen{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+
+  /* ============ LEGEND ============ */
+  .legend{ display:none; flex-wrap:wrap; justify-content:center; gap:8px 10px; margin:0 0 18px; }
+  .legend .item{
+    display:flex; align-items:center; gap:6px;
+    font-size:11.5px; font-weight:700; color:var(--ink-soft);
+    background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:5px 12px;
+    transition:transform .15s ease;
+  }
+  .legend .item:hover{ transform:translateY(-2px); }
+  .legend .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; }
+
+  /* ============ SCHEDULE ============ */
+  .schedule{
+    display:none;
+    background:var(--paper);
+    border-radius:22px;
+    box-shadow:0 20px 46px -22px rgba(36,27,61,0.28);
+    padding:16px;
+  }
+  .capture-title{
+    display:none;
+    text-align:center;
+    padding:4px 4px 14px;
+  }
+  .capture-title .ct-school{ font-weight:800; font-size:15px; color:var(--ink); }
+  .capture-title .ct-track{ font-weight:600; font-size:12px; color:var(--ink-soft); margin-top:2px; }
+
+  .day-block{
+    display:flex;
+    align-items:stretch;
+    gap:10px;
+    background:#FAF8FF;
+    border-radius:16px;
+    padding:10px;
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .55s cubic-bezier(.2,.8,.2,1), transform .55s cubic-bezier(.2,.8,.2,1);
+  }
+  .day-block.in{ opacity:1; transform:translateY(0); }
+  .day-block + .day-block{ margin-top:10px; }
+
+  .day-label{
+    flex:none;
+    width:76px;
+    border-radius:12px;
+    background:linear-gradient(135deg, var(--coral), var(--sun));
+    color:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:8px 4px;
+  }
+  .day-label .d-fa{ font-weight:800; font-size:14px; }
+  .day-label .d-en{ font-size:8px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-top:2px; }
+
+  .day-classes{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    justify-content:center;
+  }
+  .class-row{
+    display:flex; align-items:center; gap:10px;
+    border-radius:10px;
+    padding:8px 12px;
+    color:#fff;
+    font-weight:700;
+    font-size:13.5px;
+    opacity:0;
+    transform:translateX(-10px);
+    transition:opacity .4s ease, transform .4s ease, box-shadow .2s ease, translate .2s ease;
+  }
+  .day-block.in .class-row{ opacity:1; transform:translateX(0); }
+  .class-row:hover{ transform:translateX(-5px); }
+  .class-row .c-time{
+    font-size:11px;
+    font-weight:600;
+    opacity:0.9;
+    margin-inline-start:auto;
+    white-space:nowrap;
+  }
+
+  .فیزیک{ background:linear-gradient(135deg, var(--sky), #2A8FE0); }
+  .زیست{ background:linear-gradient(135deg, var(--mint), #1FAF6E); }
+  .ریاضی{ background:linear-gradient(135deg, var(--sun), #F2932B); }
+  .شیمی{ background:linear-gradient(135deg, #C77DFF, var(--violet)); }
+  .منطق{ background:linear-gradient(135deg, var(--teal), #17A796); }
+  .ریاضی-آمار{ background:linear-gradient(135deg, var(--coral), #E24C4C); }
+
+  .فیزیک:hover{ box-shadow:0 10px 22px -8px #3DAEFF; }
+  .زیست:hover{ box-shadow:0 10px 22px -8px #26D48A; }
+  .ریاضی:hover{ box-shadow:0 10px 22px -8px #FFB627; }
+  .شیمی:hover{ box-shadow:0 10px 22px -8px #7B5CFA; }
+  .منطق:hover{ box-shadow:0 10px 22px -8px #1FC8B6; }
+  .ریاضی-آمار:hover{ box-shadow:0 10px 22px -8px #FF6B6B; }
+
+  footer{
+    text-align:center; margin-top:26px;
+    display:flex; flex-direction:column; align-items:center; gap:5px;
+  }
+  footer .f-line1{ font-size:10.5px; letter-spacing:0.5px; color:var(--ink-soft); opacity:0.75; }
+  footer .f-line2{ font-size:12.5px; font-weight:700; color:var(--ink); letter-spacing:0.2px; }
+
+  /* ============ CONTACT ============ */
+  .contact-block{
+    margin-top:18px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+  }
+  .contact-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:999px;
+    padding:9px 16px 9px 12px;
+    color:var(--ink);
+    font-weight:700;
+    font-size:12.5px;
+    direction:ltr;
+    position:relative;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .contact-pill:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px -12px rgba(36,27,61,0.3);
+    border-color:var(--violet);
+  }
+  .contact-pill:active{ transform:translateY(0) scale(0.97); }
+  .contact-pill .c-icon{
+    width:28px; height:28px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff;
+    flex:none;
+    animation:ringPulse 2.6s ease-in-out infinite;
+  }
+  .contact-pill.school .c-icon{ background:linear-gradient(135deg, var(--sky), var(--violet)); }
+  .contact-pill.manager .c-icon{ background:linear-gradient(135deg, var(--coral), var(--sun)); }
+  .contact-pill .c-icon svg{ width:13px; height:13px; }
+  .contact-pill .c-text{ display:flex; flex-direction:column; align-items:flex-start; gap:1px; }
+  .contact-pill .c-label{
+    font-size:9.5px; font-weight:600; color:var(--ink-soft); opacity:0.8;
+    direction:rtl;
+  }
+  .contact-pill .c-number{ font-size:13px; font-weight:800; letter-spacing:0.3px; }
+  .contact-pill .c-tap{
+    margin-inline-start:2px;
+    font-size:9px; font-weight:600; color:var(--ink-soft); opacity:0.6;
+    direction:rtl; white-space:nowrap;
+  }
+  @keyframes ringPulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(123,92,250,0.35); }
+    50%{ box-shadow:0 0 0 6px rgba(123,92,250,0); }
+  }
+
+  /* contact info baked into the downloadable image */
+  .capture-contact{
+    display:none;
+    justify-content:center;
+    gap:22px;
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+  }
+  .capture-contact .cc-item{
+    text-align:center;
+    direction:ltr;
+  }
+  .capture-contact .cc-label{
+    font-size:10px; font-weight:700; color:var(--ink-soft);
+    direction:rtl; margin-bottom:2px;
+  }
+  .capture-contact .cc-number{
+    font-size:14px; font-weight:800; color:var(--ink);
+  }
+
+  @media (max-width:520px){
+    .day-block{ flex-direction:column; }
+    .day-label{ width:100%; flex-direction:row; gap:8px; padding:8px 12px; }
+    .class-row .c-time{ margin-inline-start:auto; }
+  }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important;
+    }
+    .blob{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="blob-field" aria-hidden="true">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="blob blob4"></div>
+</div>
+
+<div class="transition-overlay" id="transitionOverlay" aria-hidden="true"></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="monogram">
+      <div class="monogram-shape">
+        <span>آ</span>
+        <div class="monogram-pages"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="eyebrow">کلاس‌های تابستانی</div>
+    <h1 class="school-name">
+      <span class="line">دبیرستان نمونه دولتی</span>
+      <span class="line">آیت‌الله خامنه‌ای</span>
+    </h1>
+    <div class="school-year">تابستان ۱۴۰۵</div>
+    <p class="subtitle" id="subtitleText">برنامهٔ هفتگی جمع‌بندی پایهٔ دهم، ویژهٔ رشته‌های تجربی و ریاضی و انسانی</p>
+  </div>
+
+  <div class="gate" id="gate">
+    <div class="gate-title">برای مشاهدهٔ برنامهٔ کلاس‌ها، رشتهٔ خود را انتخاب کن</div>
+    <div class="gate-cards">
+      <div class="gate-card tj" tabindex="0" onclick="selectTrack('tj', event)" onkeydown="if(event.key==='Enter')selectTrack('tj', event)">
+        <div class="g-icon">ت</div>
+        <div class="g-title">تجربی و ریاضی</div>
+        <div class="g-sub">فیزیک · زیست · ریاضی · شیمی</div>
+      </div>
+      <div class="gate-card en" tabindex="0" onclick="selectTrack('en', event)" onkeydown="if(event.key==='Enter')selectTrack('en', event)">
+        <div class="g-icon">ا</div>
+        <div class="g-title">انسانی</div>
+        <div class="g-sub">منطق · ریاضی و آمار</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-bar" id="resultBar">
+    <span class="chip" id="resultChip"></span>
+    <button class="download-btn" onclick="downloadImage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+      دانلود عکس برنامه
+    </button>
+    <button class="switch-btn" onclick="resetTrack(event)">تغییر رشته</button>
+  </div>
+
+  <div class="legend" id="legend"></div>
+
+  <div id="scheduleCapture" class="schedule">
+    <div class="capture-title" id="captureTitle">
+      <div class="ct-school">دبیرستان نمونه دولتی آیت‌الله خامنه‌ای — تابستان ۱۴۰۵</div>
+      <div class="ct-track" id="captureTrackName"></div>
+    </div>
+    <div id="scheduleBody"></div>
+    <div class="capture-contact" id="captureContact">
+      <div class="cc-item">
+        <div class="cc-label">تلفن آموزشگاه</div>
+        <div class="cc-number">05632436041</div>
+      </div>
+      <div class="cc-item">
+        <div class="cc-label">مدیریت: محمود رضایی</div>
+        <div class="cc-number">09153633191</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="f-line1">دبیرستان نمونه دولتی آیت‌الله خامنه‌ای · تابستان ۱۴۰۵</span>
+    <span class="f-line2">مدیریت آموزشگاه: محمود رضایی</span>
+
+    <div class="contact-block">
+      <a class="contact-pill school" href="tel:05632436041">
+        <span class="c-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        </span>
+        <span class="c-text">
+          <span class="c-label">تلفن آموزشگاه</span>
+          <span class="c-number">05632436041</span>
+        </span>
+        <span class="c-tap">برای تماس ضربه بزن</span>
+      </a>
+      <a class="contact-pill manager" href="tel:09153633191">
+        <span class="c-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        </span>
+        <span class="c-text">
+          <span class="c-label">مدیریت: محمود رضایی</span>
+          <span class="c-number">09153633191</span>
+        </span>
+        <span class="c-tap">برای تماس ضربه بزن</span>
+      </a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const DATA = {
+    tj: {
+      label: "تجربی و ریاضی",
+      legend: [
+        {name:"فیزیک", color:"#3DAEFF"},
+        {name:"زیست", color:"#26D48A"},
+        {name:"ریاضی", color:"#FFB627"},
+        {name:"شیمی", color:"#7B5CFA"}
+      ],
+      gradient: "linear-gradient(135deg, #3DAEFF, #7B5CFA)",
+      days: [
+        {fa:"شنبه", en:"Saturday", classes:[{subj:"فیزیک", time:"۷:۳۰ تا ۹"},{subj:"فیزیک", time:"۹:۱۵ تا ۱۰:۴۵"},{subj:"فیزیک", time:"۱۱ تا ۱۲:۳۰"}]},
+        {fa:"یکشنبه", en:"Sunday", classes:[{subj:"زیست", time:"۷:۳۰ تا ۹"},{subj:"زیست", time:"۹:۱۵ تا ۱۰:۴۵"},{subj:"زیست", time:"۱۱ تا ۱۲:۳۰"}]},
+        {fa:"دوشنبه", en:"Monday", classes:[{subj:"ریاضی", time:"۷:۳۰ تا ۹"},{subj:"ریاضی", time:"۹:۱۵ تا ۱۰:۴۵"},{subj:"ریاضی", time:"۱۱ تا ۱۲:۳۰"}]},
+        {fa:"چهارشنبه", en:"Wednesday", classes:[{subj:"شیمی", time:"۷:۳۰ تا ۹"},{subj:"شیمی", time:"۹:۱۵ تا ۱۰:۴۵"},{subj:"شیمی", time:"۱۱ تا ۱۲:۳۰"}]}
+      ]
+    },
+    en: {
+      label: "انسانی",
+      legend: [
+        {name:"منطق", color:"#1FC8B6"},
+        {name:"ریاضی و آمار", color:"#FF6B6B"}
+      ],
+      gradient: "linear-gradient(135deg, #1FC8B6, #26D48A)",
+      days: [
+        {fa:"شنبه", en:"Saturday", classes:[{subj:"منطق", time:"۷:۳۰ تا ۹"},{subj:"منطق", time:"۹:۱۵ تا ۱۰:۴۵"},{subj:"منطق", time:"۱۱ تا ۱۲:۳۰"}]},
+        {fa:"چهارشنبه", en:"Wednesday", classes:[{subj:"ریاضی و آمار", time:"۷:۳۰ تا ۹"},{subj:"ریاضی و آمار", time:"۹:۱۵ تا ۱۰:۴۵"},{subj:"ریاضی و آمار", time:"۱۱ تا ۱۲:۳۰"}]}
+      ]
+    }
+  };
+
+  const CLASS_MAP = {
+    "فیزیک":"فیزیک", "زیست":"زیست", "ریاضی":"ریاضی", "شیمی":"شیمی",
+    "منطق":"منطق", "ریاضی و آمار":"ریاضی-آمار"
+  };
+
+  let currentTrackKey = null;
+  const TRANSITION_MS = 650;
+
+  /* ---------- 3D tilt for gate cards ---------- */
+  document.querySelectorAll('.gate-card').forEach(card=>{
+    card.addEventListener('mousemove', e=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const rotateY = (px - 0.5) * 14;
+      const rotateX = (0.5 - py) * 14;
+      card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      card.style.setProperty('--mx', (px*100)+'%');
+      card.style.setProperty('--my', (py*100)+'%');
+    });
+    card.addEventListener('mouseleave', ()=>{
+      card.style.transform = '';
+    });
+  });
+
+  /* ---------- Cinematic reveal helper ---------- */
+  function runTransition(originEl, gradient, onCovered){
+    const overlay = document.getElementById('transitionOverlay');
+    const r = originEl.getBoundingClientRect();
+    const cx = r.left + r.width/2;
+    const cy = r.top + r.height/2;
+    overlay.style.background = gradient;
+    overlay.style.setProperty('--ox', cx+'px');
+    overlay.style.setProperty('--oy', cy+'px');
+
+    // cover
+    requestAnimationFrame(()=>{ overlay.classList.add('expand'); });
+
+    setTimeout(()=>{
+      onCovered();
+      // reveal
+      requestAnimationFrame(()=>{ overlay.classList.remove('expand'); });
+      setTimeout(()=>{ overlay.style.background = 'transparent'; }, TRANSITION_MS + 30);
+    }, TRANSITION_MS + 20);
+  }
+
+  function selectTrack(key, evt){
+    currentTrackKey = key;
+    const track = DATA[key];
+    const originEl = (evt && evt.currentTarget) ? evt.currentTarget : document.querySelector('.gate-card.'+key);
+
+    runTransition(originEl, track.gradient, ()=>{
+      document.getElementById('gate').style.display = 'none';
+
+      const bar = document.getElementById('resultBar');
+      bar.style.display = 'flex';
+      const chip = document.getElementById('resultChip');
+      chip.textContent = track.label;
+      chip.className = 'chip ' + key;
+
+      const legend = document.getElementById('legend');
+      legend.innerHTML = track.legend.map(l =>
+        `<div class="item"><span class="dot" style="background:${l.color}"></span>${l.name}</div>`
+      ).join('');
+      legend.style.display = 'flex';
+
+      const body = document.getElementById('scheduleBody');
+      body.innerHTML = track.days.map(day => {
+        const rows = day.classes.map(c => {
+          const cls = CLASS_MAP[c.subj];
+          return `<div class="class-row ${cls}"><span>${c.subj}</span><span class="c-time">${c.time}</span></div>`;
+        }).join('');
+        return `<div class="day-block">
+          <div class="day-label"><span class="d-fa">${day.fa}</span><span class="d-en">${day.en}</span></div>
+          <div class="day-classes">${rows}</div>
+        </div>`;
+      }).join('');
+
+      document.getElementById('captureTrackName').textContent = 'رشتهٔ ' + track.label;
+      document.getElementById('subtitleText').textContent =
+        'برنامهٔ هفتگی جمع‌بندی پایهٔ دهم — رشتهٔ ' + track.label;
+
+      document.getElementById('scheduleCapture').style.display = 'block';
+
+      // staggered reveal of days
+      const blocks = document.querySelectorAll('#scheduleBody .day-block');
+      blocks.forEach((b, i)=>{
+        setTimeout(()=>{ b.classList.add('in'); }, 90 * i);
+      });
+
+      window.scrollTo({top: document.getElementById('resultBar').offsetTop - 30, behavior:'smooth'});
+    });
+  }
+
+  function resetTrack(evt){
+    const originEl = (evt && evt.currentTarget) ? evt.currentTarget : document.getElementById('resultBar');
+    runTransition(originEl, 'linear-gradient(135deg, var(--ink), #3B2E66)', ()=>{
+      currentTrackKey = null;
+      document.getElementById('gate').style.display = 'block';
+      document.getElementById('resultBar').style.display = 'none';
+      document.getElementById('legend').style.display = 'none';
+      document.getElementById('scheduleCapture').style.display = 'none';
+      document.getElementById('scheduleBody').innerHTML = '';
+      document.getElementById('subtitleText').textContent =
+        'برنامهٔ هفتگی جمع‌بندی پایهٔ دهم، ویژهٔ رشته‌های تجربی و ریاضی و انسانی';
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  function downloadImage(){
+    if(!currentTrackKey) return;
+    const el = document.getElementById('scheduleCapture');
+    const titleEl = document.getElementById('captureTitle');
+    const contactEl = document.getElementById('captureContact');
+    titleEl.style.display = 'block';
+    contactEl.style.display = 'flex';
+    html2canvas(el, {scale:2, backgroundColor:'#FFFFFF'}).then(canvas => {
+      titleEl.style.display = 'none';
+      contactEl.style.display = 'none';
+      const link = document.createElement('a');
+      link.download = 'برنامه-' + DATA[currentTrackKey].label.replace(/\s/g,'-') + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }).catch(()=>{ titleEl.style.display = 'none'; contactEl.style.display = 'none'; });
+  }
+</script>
+</body>
+</html>
